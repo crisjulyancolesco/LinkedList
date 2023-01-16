@@ -1,4 +1,8 @@
 # LINKED LIST 
+
+# List
+List = []
+
 # Creating Node class
 class Node:
     def __init__(self, DataVal = None):
@@ -7,10 +11,37 @@ class Node:
 
 # Creating the LinkedList class
 class LinkedList:
-   def __init__(self):
+    def __init__(self):
       self.HeadVal = None
 
-class MainProgram:
+    def CreateList(self, NewData):
+
+        # 1. Create a new node
+        # 2. Put in the data
+        # 3. Set next as None
+        NewNode = Node(NewData)
+
+        # 4. If the Linked List is empty, then make the
+        # new node as head
+        if self.HeadVal is None:
+            self.HeadVal = NewNode
+            return
+
+        # 5. Else traverse till the last node
+        Last = self.HeadVal
+        while (Last.NextVal):
+            Last = Last.NextVal
+
+        # 6. Change the next of last node
+        Last.NextVal = NewNode
+
+    def Display(self):
+        if len(List) == 0 :
+            print("* The List is empty *")
+        else:
+            print("* The List contains: ")
+            print(List)
+
     def MainMenu(self):
         global UserInput
         print("***** LINKED LIST *****")
@@ -31,7 +62,10 @@ class MainProgram:
             self.MainMenu()
 
             if UserInput == 1: # Create List
-                self.CreateList()
+                Size = int(input("How many nodes you want to create: "))
+                for n in range(Size):
+                    List.append(input("Enter the element: "))
+                self.CreateList(List)
             
             if UserInput == 2: # Add at Beginning of the list
                 self.AddBeginning()
@@ -57,6 +91,5 @@ class MainProgram:
             if UserInput == 9: # Quit program
                 break
 
-StartProgram = MainProgram()
+StartProgram = LinkedList()
 StartProgram.Choice()
-    

@@ -14,34 +14,69 @@ class LinkedList:
     def __init__(self):
       self.HeadVal = None
 
+    # 1. Create List
     def CreateList(self, NewData):
 
-        # 1. Create a new node
-        # 2. Put in the data
-        # 3. Set next as None
         NewNode = Node(NewData)
 
-        # 4. If the Linked List is empty, then make the
-        # new node as head
+        # Checks if the list is empty
         if self.HeadVal is None:
             self.HeadVal = NewNode
             return
 
-        # 5. Else traverse till the last node
         Last = self.HeadVal
         while (Last.NextVal):
             Last = Last.NextVal
 
-        # 6. Change the next of last node
+        # Makes the last node the new node
         Last.NextVal = NewNode
 
+    # 2. Add at Beginning
+    def AddBeginning(self, NewData):
+
+        NewNode = Node(NewData)
+        NewNode.NextVal = self.HeadVal
+
+        # Makes the new node the head
+        self.HeadVal = NewNode
+        print(List)
+    
+    # 3. Add After
+    def AddAfter(self, PrevNode, NewData):
+
+        # Check if the prevnode exists in the list
+        if PrevNode is None:
+            print ("* Previous node can't be found *")
+            return
+
+        NewNode = Node(NewData)
+        NewNode.NextVal = PrevNode.NextVal
+
+        # Makes the prevnode the newnode
+        PrevNode.NextVal = NewNode
+
+
+    # 5. Display
     def Display(self):
+
+        # if statements to check if the list is empty or not
         if len(List) == 0 :
             print("* The List is empty *")
         else:
-            print("* The List contains: ")
-            print(List)
+            print(" The List contains: ")
+            print(List) # Display the list
+    
+    # 6. Count
+    def Count(self):
+        Len = len(List)
+        print(f"Number of elements are: {Len}")
 
+    # 7. Reverse
+    def Reverse(self):
+        List.reverse()
+        print(f"The reversed list is:\n{List}")
+
+    # MainMenu where the choices can be found
     def MainMenu(self):
         global UserInput
         print("***** LINKED LIST *****")
@@ -68,10 +103,15 @@ class LinkedList:
                 self.CreateList(List)
             
             if UserInput == 2: # Add at Beginning of the list
-                self.AddBeginning()
+                Size = int(input("How many nodes you want to create: "))
+                for n in range(Size):
+                    List.append(input("Enter the element: "))
+                self.AddBeginning(List)
 
             if UserInput == 3: # Add After a node in the list
-                self.AddAfter()
+                List.append(input("Enter the element: "))
+                Pos = input("Enter the position after which this element is inserted: ")
+                self.AddAfter(Pos, List)
 
             if UserInput == 4: # Delete a node in the list
                 self.Delete()

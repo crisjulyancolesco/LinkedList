@@ -76,6 +76,15 @@ class LinkedList:
         List.reverse()
         print(f"The reversed list is:\n{List}")
 
+    # 8. Search
+    def Search(self, Key):
+        if Key in List:
+            Index = List.index(Key)
+            print(f"Item {Key} found at position {Index}")
+        
+        else:
+            print("* Item does not exist *")
+
     # MainMenu where the choices can be found
     def MainMenu(self):
         global UserInput
@@ -126,7 +135,8 @@ class LinkedList:
                 self.Reverse()
 
             if UserInput == 8: # Search a node in List
-                self.Search()
+                El = input("Enter the element to be searched: ")
+                self.Search(El)
             
             if UserInput == 9: # Quit program
                 break

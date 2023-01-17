@@ -84,7 +84,7 @@ class LinkedList:
         
         else:
             print("* Item does not exist *")
-
+    
     # MainMenu where the choices can be found
     def MainMenu(self):
         global UserInput
@@ -139,6 +139,7 @@ class LinkedList:
                 self.Search(El)
             
             if UserInput == 9: # Quit program
+                print("Thank you for using the LINKED LIST program.")
                 break
 
 StartProgram = LinkedList()
